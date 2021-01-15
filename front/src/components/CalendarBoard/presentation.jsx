@@ -2,7 +2,7 @@ import React from 'react';
 import { GridList, Typography } from "@material-ui/core";
 
 import CalendarElement from "../CalendarElements";
-import { createCalendar } from "../../services/calendar";
+// import { createCalendar } from "../../services/calendar";
 
 // import dayjs from "dayjs";
 // import "dayjs/locale/ja";
@@ -49,12 +49,12 @@ import dayjs from 'dayjs';
 //     "2"
 // ];
 
-const calendar = createCalendar();
+// const calendar = createCalendar();
 
 const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-const CalendarBoard = () => {
-    // console.log(calendar);
+const CalendarBoard = ({ calendar }) => {
+    console.log(calendar);
     return (
         <div className={styles.container}>
             <GridList 
