@@ -17,11 +17,11 @@ const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const CalendarBoard = ({ 
     calendar, 
     month, 
-    openAddScheduleDialog,
-    schedules
+    openAddScheduleDialog
+    // schedules
  }) => {
     // console.log(calendar);
-    console.log(schedules);
+    // console.log(schedules);
     return (
         <div className={styles.container}>
             <GridList 
@@ -30,14 +30,15 @@ const CalendarBoard = ({
             spacing={0}
             cellHeight="auto"
             >
-                {calendar.map(c => (
+                {calendar.map(({ date, schedules }) => (
                     <li 
-                    key={c.toISOString()}
-                    onClick={() => openAddScheduleDialog(c)}
+                    key={date.toISOString()}
+                    onClick={() => openAddScheduleDialog(date)}
                     >
                         <CalendarElement 
-                        day={c}
+                        day={date}
                         month={month}
+                        schedules={schedules}
                         />
 
                         {/* <Typography

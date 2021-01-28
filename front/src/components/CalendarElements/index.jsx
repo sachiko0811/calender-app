@@ -2,12 +2,14 @@ import React from "react";
 
 import * as styles from "./style.css";
 
+import Schedule from '../Schedule';
+
 import { Typography } from "@material-ui/core";
 import { isSameDay, isSameMonth, isFirstDay, getMonth } from "../../services/calendar";
 
 import  dayjs from "dayjs";
 
-const CalendarElement = ({ day, month }) => {
+const CalendarElement = ({ day, month, schedules }) => {
 
     
     // const isFirstDay = day.date() === 1;
@@ -43,6 +45,11 @@ const CalendarElement = ({ day, month }) => {
                     {day.format(format)}
                 </span>
             </Typography>
+            <div className={styles.schedules}>
+                {schedules.map(e =>  (
+                    <Schedule key={e.id} schedule={e} />
+                ))}
+            </div>
         </div>
     )
 }
