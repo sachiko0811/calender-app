@@ -7,7 +7,8 @@ import {
     Button,
     Input,
     Grid,
-    IconButton
+    IconButton,
+    Typography
 } from "@material-ui/core";
 
 import { LocationOnOutlined, NotesOutlined, AccessTime, Close } from "@material-ui/icons";
@@ -19,18 +20,25 @@ import * as styles from './style.css';
 const spacer = { margin: "4px 0" };
 
 const Title = withStyles({
-    root: { marginBottom: 32, fontSize: 22 }
+    root: { 
+        // marginBottom: 32, 
+        fontSize: 22 }
 })(Input);
 
 const AddScheduleDialog = ({ 
     schedule: {
         form: { title, location, description, date },
-         isDialogOpen 
+         isDialogOpen,
+         isStartEdit
         }, 
         closeDialog,
         setSchedule,
-        saveSchedule
+        saveSchedule,
+        setIsEditStart
      }) => {
+
+        const isTitleInvalid = !title && isStartEdit;
+
     return (
         <Dialog
         open={isDialogOpen}
@@ -53,7 +61,16 @@ const AddScheduleDialog = ({
                 value={title}
                 placeholder="Add title and date" 
                 onChange={e => setSchedule({ title: e.target.value })}
+                onBlur={setIsEditStart}
+                error={isTitleInvalid}
                 />
+                <div className={styles.validation}>
+                    {isTitleInvalid && (
+                        <Typography variant="caption" component="div" color="error">
+                            You need to fill the title
+                        </Typography>
+                    )}
+                </div>
                 <Grid
                 container
                 spacing={1}
@@ -100,7 +117,7 @@ const AddScheduleDialog = ({
                 </Grid>
             </DialogContent>
             <DialogActions>
-                <Button color="primary" variant="outlined" onClick={saveSchedule}>
+                <Button color="primary" variant="outlined" onClick={saveSchedule} disabled={!title}>
                     Save
                 </Button>
             </DialogActions>

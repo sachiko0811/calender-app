@@ -2,7 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+// import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
 
 import CalendarBoard from "./components/CalendarBoard/container";
 import rootReducer from "./redux/rootReducer";
@@ -20,7 +22,9 @@ import "dayjs/locale/en-ca";
 dayjs.locale("en-ca");
 // dayjs.locale("ja");
 
-const store = createStore(rootReducer);
+import ErrorSnackbar from "./components/ErrorSnackbar/container";
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 
 const App = () => (
@@ -30,6 +34,7 @@ const App = () => (
             <CalendarBoard />
             <AddScheduleDialog />
             <CurrentScheduleDialog />
+            <ErrorSnackbar />
         </MuiPickersUtilsProvider>
     </Provider>
 );
