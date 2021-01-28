@@ -9,7 +9,7 @@ import { isSameDay, isSameMonth, isFirstDay, getMonth } from "../../services/cal
 
 import  dayjs from "dayjs";
 
-const CalendarElement = ({ day, month, schedules }) => {
+const CalendarElement = ({ day, month, schedules, ...props }) => {
 
     
     // const isFirstDay = day.date() === 1;
@@ -47,7 +47,7 @@ const CalendarElement = ({ day, month, schedules }) => {
             </Typography>
             <div className={styles.schedules}>
                 {schedules.map(e =>  (
-                    <Schedule key={e.id} schedule={e} />
+                    <Schedule key={e.id} schedule={e} {...props} />
                 ))}
             </div>
         </div>

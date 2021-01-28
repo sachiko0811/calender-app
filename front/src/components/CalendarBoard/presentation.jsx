@@ -17,7 +17,8 @@ const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const CalendarBoard = ({ 
     calendar, 
     month, 
-    openAddScheduleDialog
+    openAddScheduleDialog,
+    openCurrentScheduleDialog
     // schedules
  }) => {
     // console.log(calendar);
@@ -39,6 +40,7 @@ const CalendarBoard = ({
                         day={date}
                         month={month}
                         schedules={schedules}
+                        onClickSchedule={openCurrentScheduleDialog}
                         />
 
                         {/* <Typography
