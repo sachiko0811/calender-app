@@ -9,52 +9,13 @@ import CalendarElement from "../CalendarElements";
 // dayjs.locale("ja");
 
 import * as styles from "./style.css";
-import dayjs from 'dayjs';
-
-// const calendar = [
-//     "29",
-//     "30",
-//     "10月1日",
-//     "2",
-//     "3",
-//     "4",
-//     "5",
-//     "6",
-//     "7",
-//     "8",
-//     "9",
-//     "10",
-//     "11",
-//     "12",
-//     "13",
-//     "14",
-//     "15",
-//     "16",
-//     "17",
-//     "18",
-//     "19",
-//     "20",
-//     "21",
-//     "22",
-//     "23",
-//     "24",
-//     "25",
-//     "26",
-//     "27",
-//     "28",
-//     "29",
-//     "30",
-//     "31",
-//     "11月1日",
-//     "2"
-// ];
 
 // const calendar = createCalendar();
 
 const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-const CalendarBoard = ({ calendar }) => {
-    console.log(calendar);
+const CalendarBoard = ({ calendar, month, openAddScheduleDialog }) => {
+    // console.log(calendar);
     return (
         <div className={styles.container}>
             <GridList 
@@ -77,8 +38,8 @@ const CalendarBoard = ({ calendar }) => {
                     </li>
                 ))}
                 {calendar.map(c => (
-                    <li key={c.toISOString()}>
-                        <CalendarElement day={c} />
+                    <li key={c.toISOString()} onClick={() => openAddScheduleDialog()}>
+                        <CalendarElement day={c} month={month} />
                     </li>
                 ))}
             {/* {calendar.map(c => (

@@ -3,11 +3,11 @@ import React from "react";
 import * as styles from "./style.css";
 
 import { Typography } from "@material-ui/core";
-import { isSameDay, isSameMonth, isFirstDay } from "../../services/calendar";
+import { isSameDay, isSameMonth, isFirstDay, getMonth } from "../../services/calendar";
 
 import  dayjs from "dayjs";
 
-const CalendarElement = ({ day }) => {
+const CalendarElement = ({ day, month }) => {
 
     
     // const isFirstDay = day.date() === 1;
@@ -20,7 +20,8 @@ const CalendarElement = ({ day }) => {
 
     // greydown for the other months
     // const isCurrentMonth = day.month() === today.month();
-    const isCurrentMonth = isSameMonth(day, today);
+    const currentMonth = getMonth(month);
+    const isCurrentMonth = isSameMonth(day, currentMonth);
     const textColor = isCurrentMonth ? "textPrimary" : "textSecondary";
 
     // setting the month info for the first day of the month
