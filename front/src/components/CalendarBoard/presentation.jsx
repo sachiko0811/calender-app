@@ -24,9 +24,17 @@ const CalendarBoard = ({ calendar, month, openAddScheduleDialog }) => {
             spacing={0}
             cellHeight="auto"
             >
-                {days.map(d => (
-                    <li key={d}>
-                        <Typography
+                {calendar.map(c => (
+                    <li 
+                    key={c.toISOString()}
+                    onClick={() => openAddScheduleDialog(c)}
+                    >
+                        <CalendarElement 
+                        day={c}
+                        month={month}
+                        />
+
+                        {/* <Typography
                         className={styles.days}
                         color="textSecondary"
                         align="center"
@@ -34,14 +42,14 @@ const CalendarBoard = ({ calendar, month, openAddScheduleDialog }) => {
                         component="div"
                         >
                         {d}
-                        </Typography>
+                        </Typography> */}
                     </li>
                 ))}
-                {calendar.map(c => (
-                    <li key={c.toISOString()} onClick={() => openAddScheduleDialog()}>
+                {/* {calendar.map(c => (
+                    <li key={c.toISOString()} onClick={() => openAddScheduleDialog(c)}>
                         <CalendarElement day={c} month={month} />
                     </li>
-                ))}
+                ))} */}
             {/* {calendar.map(c => (
                 <li>{c}</li>
             ))} */}

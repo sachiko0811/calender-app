@@ -6,12 +6,15 @@ import {
     DialogActions,
     Button,
     Input,
-    Grid
+    Grid,
+    IconButton
 } from "@material-ui/core";
 
-import { LocationOnOutlined, NotesOutlined, AccessTime } from "@material-ui/icons";
+import { LocationOnOutlined, NotesOutlined, AccessTime, Close } from "@material-ui/icons";
 import { DatePicker } from "@material-ui/pickers";
 import { withStyles } from "@material-ui/styles";
+
+import * as styles from './style.css';
 
 const spacer = { margin: "4px 0" };
 
@@ -25,7 +28,7 @@ const AddScheduleDialog = ({
          isDialogOpen 
         }, 
         closeDialog,
-        setSchedule
+        setEvent
      }) => {
     return (
         <Dialog
@@ -34,6 +37,14 @@ const AddScheduleDialog = ({
         maxWidth="xs"
         fullWidth
         >
+            <DialogActions>
+                <div className={styles.closeButton}>
+                    <IconButton onClick={closeDialog} size="small">
+                        <Close />
+                    </IconButton>
+                </div>
+            </DialogActions>
+
             <DialogContent>
                 <Title  
                 autoFocus 
@@ -56,7 +67,7 @@ const AddScheduleDialog = ({
                         value={date}
                         onChange={d => setSchedule({ date: d })}
                         variant="inline"
-                        format="YYYY MM"
+                        format="MMM DD YYYY"
                         animateYearScrolling
                         disableToolbar
                         fullWidth
