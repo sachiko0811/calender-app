@@ -14,8 +14,14 @@ import * as styles from "./style.css";
 
 const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-const CalendarBoard = ({ calendar, month, openAddScheduleDialog }) => {
+const CalendarBoard = ({ 
+    calendar, 
+    month, 
+    openAddScheduleDialog,
+    schedules
+ }) => {
     // console.log(calendar);
+    console.log(schedules);
     return (
         <div className={styles.container}>
             <GridList 

@@ -28,7 +28,8 @@ const AddScheduleDialog = ({
          isDialogOpen 
         }, 
         closeDialog,
-        setEvent
+        setSchedule,
+        saveSchedule
      }) => {
     return (
         <Dialog
@@ -99,7 +100,7 @@ const AddScheduleDialog = ({
                 </Grid>
             </DialogContent>
             <DialogActions>
-                <Button color="primary" variant="outlined">
+                <Button color="primary" variant="outlined" onClick={saveSchedule}>
                     Save
                 </Button>
             </DialogActions>
