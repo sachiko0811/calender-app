@@ -1,6 +1,16 @@
 import React from "react";
 
-import { IconButton, Toolbar, Typography, withStyles } from "@material-ui/core";
+import { 
+    IconButton, 
+    Toolbar, 
+    Typography, 
+    withStyles,
+    Dialog,
+    Tooltip,
+    DialogContent,
+    DialogActions,
+    Grid
+ } from "@material-ui/core";
 
 import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIos from "@material-ui/icons/ArrowForwardIos";
@@ -31,30 +41,28 @@ const Navigation = ({ setNextMonth, setPreviousMonth, setMonth, month }) => {
             width="40"
             height="40"
             />
-            <Typography
+            <StyledTypography
             color="textSecondary"
             variant="h5"
             component="h1"
             >
                 Calendar
-            </Typography>
-            <IconButton 
-            size="small"
-            onClick={setPreviousMonth}
-            >
-                <ArrowBackIos />
-            </IconButton>
-            <IconButton 
-            size="small"
-            onClick={setNextMonth}
-            >
-                <ArrowForwardIos />
-            </IconButton>
+            </StyledTypography>
+            <Tooltip title="Previous month" placement="bottom">
+                <IconButton size="small" onClick={setPreviousMonth}>
+                    <ArrowBackIos />
+                </IconButton>
+            </Tooltip>
+            <Tooltip title="Next month" placement="bottom">
+                <IconButton size="small" onClick={setNextMonth}>
+                    <ArrowForwardIos />
+                </IconButton>
+            </Tooltip>
             <StyledDatePicker  
             value={month}
             onChange={setMonth}
             variant="inline"
-            format="YYYY MM"
+            format="YYYY MMM"
             animateYearScrolling
             disableToolbar
             />

@@ -8,7 +8,8 @@ import {
     Input,
     Grid,
     IconButton,
-    Typography
+    Typography,
+    Tooltip
 } from "@material-ui/core";
 
 import { LocationOnOutlined, NotesOutlined, AccessTime, Close } from "@material-ui/icons";
@@ -48,9 +49,11 @@ const AddScheduleDialog = ({
         >
             <DialogActions>
                 <div className={styles.closeButton}>
-                    <IconButton onClick={closeDialog} size="small">
-                        <Close />
-                    </IconButton>
+                    <Tooltip>
+                        <IconButton onClick={closeDialog} size="small">
+                            <Close />
+                        </IconButton>
+                    </Tooltip>
                 </div>
             </DialogActions>
 

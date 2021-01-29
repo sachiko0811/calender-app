@@ -12,3 +12,12 @@ export const formatSchedule = schedule => ({
     ...schedule,
     date: dayjs(schedule.date)
 });
+
+export const isCloseDialog = schedule => {
+    const message = "Do you want to discard before saving?";
+
+    return isScheduleEmpty(schedule) || window.confirm(message);
+}
+
+const isScheduleEmpty = schedule =>
+    !schedule.title && !schedule.description && !schedule.location;

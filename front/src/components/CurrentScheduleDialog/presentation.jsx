@@ -5,7 +5,8 @@ import {
     IconButton,
     DialogActions,
     Grid,
-    Typography
+    Typography,
+    Tooltip
 } from '@material-ui/core';
 
 import { Close, LocationOnOutlined, NotesOutlined, DeleteOutlineOutlined } from "@material-ui/icons";
@@ -15,8 +16,8 @@ const spacer = (top, bottom) => ({
     margin: `${top}px 0 ${bottom}px 0`
 });
 
-const currentScheduleDialog = ({
-    schedule: { item,  isDialogOpen },
+const CurrentScheduleDialog = ({
+    schedule: { item, isDialogOpen },
     closeDialog,
     deleteItem
 }) => {
@@ -29,12 +30,16 @@ const currentScheduleDialog = ({
         >
             <DialogActions>
                 <div className={styles.closeButton}>
-                    <IconButton onClick={deleteItem} size="small">
-                <DeleteOutlineOutlined />
-            </IconButton>
-            <IconButton onClick={closeDialog} size="small">
-                <Close />
-            </IconButton>
+                    <Tooltip title="Delete" placement="bottom">
+                        <IconButton onClick={deleteItem}  size="small">
+                            <DeleteOutlineOutlined />
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Close" placement="bottom">
+                        <IconButton onClick={closeDialog}  size="small">
+                            <Close />
+                        </IconButton>
+                    </Tooltip>
                 </div>
             </DialogActions>
 
@@ -87,4 +92,4 @@ const currentScheduleDialog = ({
     )
 }
 
-export default currentScheduleDialog;
+export default CurrentScheduleDialog;
