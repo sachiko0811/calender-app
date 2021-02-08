@@ -5,7 +5,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, "public/js"),
     filename: "bundle.js",
-    publicPath: "https://sachiko0811.github.io/calender-app"
+    publicPath: "js/bundle.js"
   },
   resolve: {
     modules: ["node_modules"],

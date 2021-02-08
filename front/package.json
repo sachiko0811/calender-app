@@ -1,5 +1,5 @@
 {
-  "homepage": "https://sachiko0811.github.io/calender-app",
+  "homepage": "http://sachiko0811.github.io/calender-app",
   "name": "calender",
   "version": "1.0.0",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "watch": "webpack --mode development --watch",
     "build": "webpack --mode production",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d public/js/bundle.js"
   },
   "keywords": [],
   "author": "",
